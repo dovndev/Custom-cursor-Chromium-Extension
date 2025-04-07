@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 document.addEventListener('DOMContentLoaded', () => {
     const addCursorBtn = document.getElementById('addCursorBtn');
     const fileInput = document.getElementById('fileInput');
@@ -65,9 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     formData.append("size", "auto");
                     formData.append("image_file", file);
 
+                    const API_KEY = process.env.REMOVE_BG_API_KEY;
+
                     const response = await fetch("https://api.remove.bg/v1.0/removebg", {
                         method: "POST",
-                        headers: { "X-Api-Key": "vuHP1c49eSZoG48gAYa1RTTv" }, // Replace with your valid API key
+                        headers: { "X-Api-Key": API_KEY },
                         body: formData,
                     });
 
